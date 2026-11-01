@@ -1,0 +1,599 @@
+{
+  "name": "gameheritage",
+  "title": "Video game digital heritage: historical structures in games and real life",
+  "version": "0.1.0",
+  "licenses": [
+    {
+      "name": "CC-BY-4.0",
+      "path": "https://creativecommons.org/licenses/by/4.0/",
+      "title": "Metadata and project-written text; third-party images and Wikipedia text keep their own licenses (see credits.csv)"
+    }
+  ],
+  "contributors": [
+    {
+      "title": "Cantay Caliskan",
+      "role": "author"
+    },
+    {
+      "title": "Mija Aleksandraviciute",
+      "role": "author"
+    }
+  ],
+  "resources": [
+    {
+      "name": "games",
+      "path": "games.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "rows": 76,
+      "schema": {
+        "fields": [
+          {
+            "name": "game_id",
+            "type": "string",
+            "description": "Identifier of the game (lowercase slug), e.g. 'assassins-creed-unity'"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Title of the game"
+          },
+          {
+            "name": "series",
+            "type": "string",
+            "description": "Series or franchise"
+          },
+          {
+            "name": "edition_note",
+            "type": "string",
+            "description": "Editions or expansions merged into this row"
+          },
+          {
+            "name": "release_year",
+            "type": "integer",
+            "description": "Year of first release"
+          },
+          {
+            "name": "developer",
+            "type": "string",
+            "description": "Developer(s), from Wikidata"
+          },
+          {
+            "name": "publisher",
+            "type": "string",
+            "description": "Publisher(s), from Wikidata"
+          },
+          {
+            "name": "genre",
+            "type": "string",
+            "description": "Genre(s), from Wikidata"
+          },
+          {
+            "name": "depicted_period_start",
+            "type": "integer",
+            "description": "First year of the historical period the game is set in"
+          },
+          {
+            "name": "depicted_period_end",
+            "type": "integer",
+            "description": "Last year of the historical period the game is set in"
+          },
+          {
+            "name": "depicted_regions",
+            "type": "string",
+            "description": "Regions or countries the game is set in"
+          },
+          {
+            "name": "wikidata_qid",
+            "type": "string",
+            "description": "Wikidata item of the game"
+          },
+          {
+            "name": "wikipedia_url",
+            "type": "string",
+            "description": "English Wikipedia article of the game"
+          },
+          {
+            "name": "fandom_wiki",
+            "type": "string",
+            "description": "The game's Fandom wiki, where most game images come from"
+          },
+          {
+            "name": "facts_source",
+            "type": "string",
+            "description": "Where the game facts come from, with retrieval date"
+          },
+          {
+            "name": "tracker_status",
+            "type": "string",
+            "description": "Curation status of the game in the project"
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "description": "Curators' notes"
+          }
+        ],
+        "primaryKey": "game_id"
+      }
+    },
+    {
+      "name": "sites",
+      "path": "sites.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "rows": 1116,
+      "schema": {
+        "fields": [
+          {
+            "name": "site_id",
+            "type": "string",
+            "description": "Identifier of the place (lowercase slug), e.g. 'notre-dame-de-paris'"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Name of the place (English label on Wikidata)"
+          },
+          {
+            "name": "alt_names",
+            "type": "string",
+            "description": "Other names, separated by semicolons"
+          },
+          {
+            "name": "wikidata_qid",
+            "type": "string",
+            "description": "Wikidata item of the place"
+          },
+          {
+            "name": "site_type",
+            "type": "string",
+            "description": "Project category (building, monument, ...); often empty, see wikidata_type"
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Country, from Wikidata"
+          },
+          {
+            "name": "locality",
+            "type": "string",
+            "description": "City or area the place is in, from Wikidata"
+          },
+          {
+            "name": "latitude",
+            "type": "number",
+            "description": "Latitude (WGS84), from Wikidata"
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "description": "Longitude (WGS84), from Wikidata"
+          },
+          {
+            "name": "construction_date",
+            "type": "string",
+            "description": "Year built, founded or first recorded; negative for BCE"
+          },
+          {
+            "name": "construction_date_basis",
+            "type": "string",
+            "description": "Which date that is and where it comes from (e.g. 'Wikidata, inception'; 'description text (approximate)')"
+          },
+          {
+            "name": "historical_period",
+            "type": "string",
+            "description": "Historical period(s) on Wikidata (P2348), e.g. 'Neolithic'"
+          },
+          {
+            "name": "architectural_style",
+            "type": "string",
+            "description": "Architectural style(s), from Wikidata"
+          },
+          {
+            "name": "heritage_designation",
+            "type": "string",
+            "description": "Heritage status, e.g. 'World Heritage Site', from Wikidata"
+          },
+          {
+            "name": "present_state",
+            "type": "string",
+            "description": "Standing, ruin, destroyed or rebuilt, when recorded"
+          },
+          {
+            "name": "commons_category",
+            "type": "string",
+            "description": "Wikimedia Commons category of the place"
+          },
+          {
+            "name": "wikipedia_url",
+            "type": "string",
+            "description": "English Wikipedia article of the place"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "Opening sentences of the Wikipedia article (or Wikidata description)"
+          },
+          {
+            "name": "description_source",
+            "type": "string",
+            "description": "Source page of the description"
+          },
+          {
+            "name": "description_license",
+            "type": "string",
+            "description": "License of the description text (Wikipedia: CC BY-SA 4.0)"
+          },
+          {
+            "name": "facts_source",
+            "type": "string",
+            "description": "Where the place facts come from, with retrieval date"
+          },
+          {
+            "name": "review_status",
+            "type": "string",
+            "description": "Curation status of the place: todo (not yet reviewed), keep, drop"
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "description": "Curators' notes; 'type: ...' gives the Wikidata type"
+          },
+          {
+            "name": "wikidata_type",
+            "type": "string",
+            "description": "What Wikidata says the place is (instance of), e.g. 'cathedral'"
+          },
+          {
+            "name": "year",
+            "type": "integer",
+            "description": "Year the place was built or founded; negative for BCE"
+          },
+          {
+            "name": "century",
+            "type": "string",
+            "description": "Century of that year, e.g. '12th century', '26th century BCE'"
+          },
+          {
+            "name": "era",
+            "type": "string",
+            "description": "Historical era used on the website (Prehistory ... 20th century)"
+          },
+          {
+            "name": "web_page",
+            "type": "string",
+            "description": "The place's page on the project website"
+          }
+        ],
+        "primaryKey": "site_id"
+      }
+    },
+    {
+      "name": "depictions",
+      "path": "depictions.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "rows": 1452,
+      "schema": {
+        "fields": [
+          {
+            "name": "depiction_id",
+            "type": "string",
+            "description": "Identifier: '<game_id>--<place slug>'"
+          },
+          {
+            "name": "game_id",
+            "type": "string",
+            "description": "The game (games.game_id)"
+          },
+          {
+            "name": "site_id",
+            "type": "string",
+            "description": "The real place (sites.site_id)"
+          },
+          {
+            "name": "in_game_name",
+            "type": "string",
+            "description": "Name of the place in the game or on its wiki"
+          },
+          {
+            "name": "period_in_game",
+            "type": "string",
+            "description": "Period in which the game shows the place, when recorded"
+          },
+          {
+            "name": "depiction_class",
+            "type": "integer",
+            "description": "1 = the game names the real place; 2 = inspired by it"
+          },
+          {
+            "name": "basis_note",
+            "type": "string",
+            "description": "How the match was made, e.g. an automatic Wikidata match and its score"
+          },
+          {
+            "name": "basis_source",
+            "type": "string",
+            "description": "Evidence for the match (Wikidata item or reference)"
+          },
+          {
+            "name": "in_game_description",
+            "type": "string",
+            "description": "Opening of the place's page on the game's Fandom wiki"
+          },
+          {
+            "name": "in_game_description_source",
+            "type": "string",
+            "description": "Source page of the in-game description"
+          },
+          {
+            "name": "in_game_description_license",
+            "type": "string",
+            "description": "License of the in-game description (Fandom: CC BY-SA 3.0)"
+          },
+          {
+            "name": "review_status",
+            "type": "string",
+            "description": "keep = reviewed by the project; todo = automatic, not yet reviewed"
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "description": "Curators' notes"
+          },
+          {
+            "name": "verified",
+            "type": "boolean",
+            "description": "True when a project member reviewed the match"
+          },
+          {
+            "name": "web_page",
+            "type": "string",
+            "description": "The real place's page on the project website"
+          }
+        ],
+        "primaryKey": "depiction_id"
+      }
+    },
+    {
+      "name": "images",
+      "path": "images.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "rows": 4987,
+      "schema": {
+        "fields": [
+          {
+            "name": "image_id",
+            "type": "string",
+            "description": "Identifier of the image ('gh-' + hash)"
+          },
+          {
+            "name": "role",
+            "type": "string",
+            "description": "'game' (in-game image) or 'real' (photograph or picture of the real place)"
+          },
+          {
+            "name": "game_id",
+            "type": "string",
+            "description": "Game the image comes from (game images)"
+          },
+          {
+            "name": "depiction_id",
+            "type": "string",
+            "description": "In-game version the image shows (game images)"
+          },
+          {
+            "name": "site_id",
+            "type": "string",
+            "description": "Real place the image shows"
+          },
+          {
+            "name": "kind",
+            "type": "string",
+            "description": "screenshot, concept_art, render, modern_photo, historical_photo, ..."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Title of the image (file page title or the collector's name for it)"
+          },
+          {
+            "name": "in_game_place",
+            "type": "string",
+            "description": "Place name the collector or wiki gives the image"
+          },
+          {
+            "name": "original_filename",
+            "type": "string",
+            "description": "File name at the source"
+          },
+          {
+            "name": "sha256",
+            "type": "string",
+            "description": "SHA-256 of the original file, for de-duplication and integrity checks"
+          },
+          {
+            "name": "phash",
+            "type": "string",
+            "description": "Perceptual hash of the original file, for near-duplicate detection"
+          },
+          {
+            "name": "width",
+            "type": "integer",
+            "description": "Width of the original file in pixels"
+          },
+          {
+            "name": "height",
+            "type": "integer",
+            "description": "Height of the original file in pixels"
+          },
+          {
+            "name": "true_format",
+            "type": "string",
+            "description": "Format of the original file as read from its bytes (jpeg, png, webp...)"
+          },
+          {
+            "name": "bytes",
+            "type": "integer",
+            "description": "Size of the original file in bytes"
+          },
+          {
+            "name": "source_name",
+            "type": "string",
+            "description": "Where the image comes from, e.g. 'Wikimedia Commons' or a Fandom wiki"
+          },
+          {
+            "name": "source_page_url",
+            "type": "string",
+            "description": "The image's page at the source (file page with author and license)"
+          },
+          {
+            "name": "file_url",
+            "type": "string",
+            "description": "Direct link to the original file at the source"
+          },
+          {
+            "name": "author",
+            "type": "string",
+            "description": "Author or uploader"
+          },
+          {
+            "name": "license",
+            "type": "string",
+            "description": "License, e.g. 'CC BY-SA 4.0', 'Public domain'; empty for game assets"
+          },
+          {
+            "name": "license_url",
+            "type": "string",
+            "description": "Link to the license"
+          },
+          {
+            "name": "rights_status",
+            "type": "string",
+            "description": "open = free license or public domain; display_only = copyrighted game asset shown for research and commentary; unknown = not yet recorded"
+          },
+          {
+            "name": "attribution_required",
+            "type": "boolean",
+            "description": "Whether the license requires attribution"
+          },
+          {
+            "name": "collected_by",
+            "type": "string",
+            "description": "Who collected the image (a project member or the project's scripts)"
+          },
+          {
+            "name": "collection_method",
+            "type": "string",
+            "description": "How the image was collected"
+          },
+          {
+            "name": "retrieved_at",
+            "type": "string",
+            "description": "Date the image was retrieved"
+          },
+          {
+            "name": "flags",
+            "type": "string",
+            "description": "Problems found by the checks (duplicates, wrong format, ...)"
+          },
+          {
+            "name": "review_status",
+            "type": "string",
+            "description": "keep, todo (not yet reviewed) or drop"
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "description": "Curators' notes"
+          },
+          {
+            "name": "web_url",
+            "type": "string",
+            "description": "Web copy hosted by the project (WebP, longest side 1200 px)"
+          },
+          {
+            "name": "thumb_url",
+            "type": "string",
+            "description": "Thumbnail hosted by the project (WebP, longest side 400 px)"
+          },
+          {
+            "name": "web_width",
+            "type": "integer",
+            "description": "Width of the web copy in pixels"
+          },
+          {
+            "name": "web_height",
+            "type": "integer",
+            "description": "Height of the web copy in pixels"
+          }
+        ],
+        "primaryKey": "image_id"
+      }
+    },
+    {
+      "name": "pairs",
+      "path": "pairs.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "rows": 3285,
+      "schema": {
+        "fields": [
+          {
+            "name": "pair_id",
+            "type": "string",
+            "description": "Identifier of the pair"
+          },
+          {
+            "name": "depiction_id",
+            "type": "string",
+            "description": "In-game version compared (depictions.depiction_id)"
+          },
+          {
+            "name": "game_image_id",
+            "type": "string",
+            "description": "Game image (images.image_id)"
+          },
+          {
+            "name": "real_image_id",
+            "type": "string",
+            "description": "Real image (images.image_id)"
+          },
+          {
+            "name": "match_level",
+            "type": "string",
+            "description": "same_structure_same_view, same_structure_other_view, same_site_other_part or style_analogue, when reviewed"
+          },
+          {
+            "name": "curator",
+            "type": "string",
+            "description": "Who made or reviewed the pair"
+          },
+          {
+            "name": "note",
+            "type": "string",
+            "description": "Curator's note"
+          },
+          {
+            "name": "featured",
+            "type": "boolean",
+            "description": "Whether the pair is a featured example"
+          },
+          {
+            "name": "review_status",
+            "type": "string",
+            "description": "keep (reviewed) or todo (automatic candidate)"
+          }
+        ],
+        "primaryKey": "pair_id"
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+# Project settings for the gameheritage curation pipeline.
+# Relative paths are resolved from this file's folder. This layout assumes the
+# package folder sits inside the shared Drive folder "video_games_digital_heritage".
+
+[paths]
+collection_root = "../Progress/New Data"   # Mija's raw collection (read-only input)
+images_root = "../real_world_images"       # downloaded real-world images (with credits)
+data_dir = "data"                          # the catalogue tables (source of truth)
+review_dir = "review"                      # review sheets and contact sheets
+release_dir = "release"                    # built dataset releases
+cache_dir = ".cache"                       # cached API responses
+
+[http]
+# Wikimedia asks API clients for contact details in the User-Agent: an email
+# address or project URL. Fill this in before running the download steps.
+contact = "Video Game Digital Heritage project, University of Rochester"
+# Free key from https://pro.europeana.eu/page/get-api (optional).
+europeana_api_key = ""
+min_interval_seconds = 0.5
+
+[collection]
+collected_by = "Mija Aleksandraviciute"
+method = "Downloaded from fan wikis (mostly Fandom) with a batch script, June-August 2026, and stored in the project's Google Drive folder; retrieved_at is the file's date there"
+
+[autolink]
+# Games whose place names must not be matched automatically: invented worlds
+# that borrow real names ("Cumberland Falls" in Red Dead Redemption 2 is not the
+# waterfall in Kentucky), parody cities, and games set inside a single ship.
+# Their places are matched only when Wikidata ties the place to the game, or
+# when a reviewer keeps the match in review/auto_links.csv.
+fictional_worlds = [
+  "red-dead-redemption", "red-dead-redemption-2",
+  "grand-theft-auto-iii", "grand-theft-auto-vice-city", "grand-theft-auto-san-andreas",
+  "grand-theft-auto-v", "grand-theft-auto-vi", "mafia-ii", "mafia-iii",
+  "bioshock-series", "far-cry-primal", "dawn-of-man", "sekiro-shadows-die-twice",
+  "amnesia-a-machine-for-pigs", "amnesia-rebirth", "draugen", "anno-1800",
+  "the-forgotten-city", "pentiment", "titanic-adventure-out-of-time",
+]

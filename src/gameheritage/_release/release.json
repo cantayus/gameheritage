@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "built_at": "2026-11-01T04:29:11Z",
+  "builder": "gameheritage 0.1.0",
+  "scope": "website",
+  "preview": false,
+  "website": "https://cantayus.github.io/video-game-digital-heritage/",
+  "counts": {
+    "games": 76,
+    "sites": 1116,
+    "depictions": 1452,
+    "images": 4987,
+    "pairs": 3285
+  }
+}

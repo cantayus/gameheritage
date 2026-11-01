@@ -1,0 +1,20 @@
+# Python and tools
+.cache/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.egg-info/
+dist/
+build/
+.venv/
+.ipynb_checkpoints/
+
+# Curation working files: these live in the project's shared folder, not in git
+/data/
+/review/
+/credits/
+/release/
+/web_images/
+harvested_game_images/
+real_world_images/
+image_archives/

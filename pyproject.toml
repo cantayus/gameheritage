@@ -1,0 +1,90 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gameheritage"
+version = "0.1.0"
+description = "Digital heritage in video games: a catalogue of real places shown in video games, side by side with the real places, with images, dates and sources."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Cantay Caliskan" },
+  { name = "Mija Aleksandraviciute" },
+]
+keywords = [
+  "digital heritage",
+  "cultural heritage",
+  "video games",
+  "dataset",
+  "wikidata",
+  "wikimedia commons",
+  "history",
+  "computer vision",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Sociology :: History",
+  "Topic :: Games/Entertainment",
+]
+dependencies = [
+  "pandas>=2.0",
+  "pydantic>=2.5",
+  "requests>=2.31",
+  "pillow>=10.0",
+  "tomli>=2.0; python_version < '3.11'",
+]
+
+[project.urls]
+Homepage = "https://github.com/cantayus/gameheritage"
+Website = "https://cantayus.github.io/video-game-digital-heritage/"
+Documentation = "https://github.com/cantayus/gameheritage#readme"
+"Data dictionary" = "https://github.com/cantayus/gameheritage/blob/main/docs/data_dictionary.md"
+Issues = "https://github.com/cantayus/gameheritage/issues"
+
+[project.optional-dependencies]
+curate = ["imagehash>=4.3", "opencv-python-headless>=4.8", "mwparserfromhell>=0.6"]
+notebook = ["matplotlib>=3.7", "jupyter"]
+parquet = ["pyarrow>=14"]
+dev = [
+  "pytest>=8",
+  "responses>=0.25",
+  "ruff>=0.5",
+  "imagehash>=4.3",
+  "pyarrow>=14",
+]
+
+[project.scripts]
+gameheritage = "gameheritage.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gameheritage"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/gameheritage", "tests", "docs", "examples", "README.md", "LICENSE", "CHANGELOG.md",
+  "CITATION.cff", "AUTHORS.md", "gameheritage.toml",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003", "B905", "SIM905"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["network: tests that call live web APIs (deselected by default)"]
+addopts = "-m 'not network'"

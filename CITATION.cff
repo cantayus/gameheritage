@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this dataset or software, please cite it as below. Credit individual images with their credit lines (credit_line column, credits.csv or image_references.bib)."
+title: "Digital heritage in video games: Historical structures in video games and their real-world counterparts"
+abstract: "A catalogue of real places (buildings, monuments, districts, settlements and natural formations) shown in video games, linking each game's version of a place to the real place, with in-game images, photographs of the real places, dates, eras, descriptions and the source and license of every item. Distributed with the Python package gameheritage."
+type: dataset
+authors:
+  - family-names: Caliskan
+    given-names: Cantay
+    affiliation: "Goergen Institute for Data Science and Artificial Intelligence, University of Rochester"
+  - family-names: Aleksandraviciute
+    given-names: Mija
+    affiliation: University of Rochester
+version: 0.1.0
+date-released: 2026-11-01
+repository-code: "https://github.com/cantayus/gameheritage"
+url: "https://cantayus.github.io/video-game-digital-heritage/"
+license: MIT
+keywords:
+  - digital heritage
+  - cultural heritage
+  - video games
+  - history
+  - Wikidata
+  - Wikimedia Commons
